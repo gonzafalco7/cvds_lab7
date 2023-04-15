@@ -27,8 +27,7 @@ public class CvdsLab7Application {
 			System.out.println("");
 			System.out.println(new String(new char[80]).replace("\0", "="));
 			System.out.println("");
-			employeeService.addEmployee(new Employee("Gonzalo", "Falco", "Student", 1160000.00, LocalDate.of(1999, 10, 26)));
-			Employee yo = employeeService.getEmployee(1L);
+			Employee yo = employeeService.addEmployee(new Employee("Gonzalo", "Falco", "Student", 1160000.00, LocalDate.of(1600, 10, 26)));
 			System.out.println(yo);
 			System.out.println("La edad del empleado es " + yo.calcularEdad());
 			System.out.println("");
