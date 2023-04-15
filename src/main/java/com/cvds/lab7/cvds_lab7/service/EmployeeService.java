@@ -2,18 +2,17 @@ package com.cvds.lab7.cvds_lab7.service;
 
 import com.cvds.lab7.cvds_lab7.model.Employee;
 import com.cvds.lab7.cvds_lab7.repository.EmployeeRepository;
+import jakarta.persistence.PostPersist;
+import jakarta.persistence.PrePersist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class EmployeeService {
-    private final EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
+    EmployeeRepository employeeRepository;
 
     public Employee addEmployee(Employee employee) {
         return employeeRepository.save(employee);
