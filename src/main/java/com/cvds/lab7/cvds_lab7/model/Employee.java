@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.*;
 
 import java.util.Objects;
 
@@ -17,15 +18,17 @@ public class Employee {
     private String lastName;
     private String role;
     private Double salary;
+    private LocalDate nacimiento;
 
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, String role, Double salary) {
+    public Employee(String firstName, String lastName, String role, Double salary, LocalDate nacimiento) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
         this.salary = salary;
+        this.nacimiento = nacimiento;
     }
     public Long getEmployeeId() {
         return employeeId;
@@ -67,6 +70,21 @@ public class Employee {
         this.salary = salary;
     }
 
+    public LocalDate getNacimiento() { return nacimiento; }
+
+    public void setNacimiento(LocalDate nacimiento) { this.nacimiento = nacimiento; }
+
+    public int calcularEdad()
+    {
+        LocalDate hoy = LocalDate.now();
+        int añoNacimiento = nacimiento.getYear();
+        int añoActual = hoy.getYear();
+        int edad = añoActual - añoNacimiento;
+        if (nacimiento.getDayOfYear() > hoy.getDayOfYear())
+            edad--;
+        return edad;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -88,6 +106,7 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", role='" + role + '\'' +
                 ", salary=" + salary +
+                ", nacimiento=" + nacimiento +
                 '}';
     }
 }
