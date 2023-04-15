@@ -23,6 +23,7 @@ public class CvdsLab7Application {
 	@Bean
 	public CommandLineRunner run() throws Exception {
 		return (args) -> {
+			employeeService.deleteAllEmployees();
 			System.out.println("");
 			System.out.println(new String(new char[80]).replace("\0", "="));
 			System.out.println("");
